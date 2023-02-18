@@ -1,0 +1,65 @@
+
+{% extends 'base.html' %} {% block title %}
+<title>Thank You</title>
+{% endblock %} {% block css %} {% endblock %} {% block content %}
+<section class="vh-100" style="background-color: #4fa095">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div
+          class="card shadow-2-strong"
+          style="border-radius: 1rem; background-color: #bad1c2"
+        >
+          <div class="card-body p-5 text-center">
+            <h3 class="mb-5">Update form</h3>
+            <h5 style="color: black">{{m}}</h5>
+            <form action="" method="post">
+              {% csrf_token %}
+
+              <div class="form-outline mb-4">
+                <input
+                  name="username"
+                  value="{{user.username}}"
+                  type="Name"
+                  placeholder="Username"
+                  id="typeEmailX-2"
+                  class="form-control form-control-lg"
+                  required
+                />
+              </div>
+              <div class="form-outline mb-4">
+                <input
+                  name="email"
+                  type="text"
+                  value="{{user.email}}"
+                  placeholder="Email"
+                  id="typeEmailX-2"
+                  class="form-control form-control-lg"
+                  required
+                />
+              </div>
+
+              {% comment %} <div class="form-outline mb-4">
+                <input
+                  name="password"
+                  type="text"
+                  value="{{user.password}}"
+                  placeholder="password"
+                  id="typePasswordX-2"
+                  class="form-control form-control-lg"
+                  required
+                />
+              </div> {% endcomment %}
+
+              <button class="btn btn-danger btn-lg btn-block" type="submit">
+                update
+              </button>
+            </form>
+            <hr class="my-4" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

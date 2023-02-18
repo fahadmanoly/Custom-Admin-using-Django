@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %} {% block content %}
+<header>
+  <div class="text-center">
+    <h1 class="text-dark">You searched for {{data1}}</h1>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid justify-content-between">
+        <button type="button" class="btn btn-info"><a class="text-light" href="/customadmin/users" style="text-decoration:none;">Users</a></button>
+        <button type="button" class="btn btn-danger"><a class="text-light" href="home" style="text-decoration:none;">Back</a></button>
+      </div>
+    </nav>
+  </div>
+</header>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Username</th>
+        <th scope="col">Password</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for data in user_data %}
+      <tr>
+        <th scope="row"><h4>{{data.id}}</h4></th>
+        <td>{{data.username}}</td>
+        <td><p>{{data.password}}</p></td>
+        <td>
+          <button type="button" class="btn btn-primary">
+            <a
+              class="text-light"
+              href="useredit!{{data.id}}"
+              style="text-decoration: none"
+              >Edit</a
+            >
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="return confirm('Do you want to delete {{product.Name}} ?')"
+          >
+            <a
+              class="text-light"
+              href="user_delete!{{data.id}}"
+              style="text-decoration: none"
+              >Delete</a
+            >
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2 class="text-danger text-center">{{m}}</h2>
+</div>
+{% endblock %}

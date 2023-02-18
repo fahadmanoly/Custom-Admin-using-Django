@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% block content  %}
+<header >
+  <div class=" text-center" >
+    <h1 class=" font-weight-bold " >ADMIN PANEL</h1>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid justify-content-between">
+        <button type="button" class="btn btn-info"><a class="text-dark " href="users" style="text-decoration:none; color:black;">Users</a></button>
+        <button type="button" class="btn btn-danger"><a class="text-dark " href="logout" style="text-decoration:none;">Logout</a></button>
+      </div>
+    </nav>
+  </div>
+  </div>  
+</header>
+<div>
+  <h2 class="text-danger text-center">{{m}}</h2>
+</div>
+          {% endblock  %}
+      

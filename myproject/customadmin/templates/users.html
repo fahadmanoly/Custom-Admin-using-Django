@@ -1,0 +1,86 @@
+
+{% extends 'base.html' %} {% block content %}
+<header>
+  <div class="text-center">
+    <h1 class="text-dark">ADMIN PANEL</h1>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid justify-content-between">
+        <button type="button" class="btn btn-secondary">
+          <a class="text-light" href="add_user" style="text-decoration: none"
+            >Add user</a>
+        </button>
+        <form action="search_user"  method="post"  class="d-flex">
+          {% csrf_token %}
+          <input class="form-control me-2"  name='searched_data' type="search" placeholder="Search" aria-label="Search" required>
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <button type="button" class="btn btn-danger">
+          <a class="text-light" href="home" style="text-decoration: none"
+            >Back</a>
+        </button>
+      </div>
+    </nav>
+    <hr class="border border-dark" />
+    <div class="row text-center">
+      <div
+        class="div d-flex col-6 justify-content-between"
+        style="float: left"
+      ></div>
+      <div
+        class="div d-flex col-6 justify-content-center"
+        style="float: left"
+      ></div>
+    </div>
+  </div>
+</header>
+<div>
+  <table class="table">
+    <table_head>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Email</th>
+        <th scope="col">Username</th>
+        <th scope="col">Password</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </table_head>
+
+    <table_body>
+      {% for user in users %}
+      <tr>
+        <th scope="row"><h4>{{user.id}}</h4></th>
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+        <td><p>{{user.password}}</p></td>
+
+        <td>
+          <button type="button" class="btn btn-primary">
+            <a
+              class="text-light"
+              href="user_edit!{{user.id}}"
+              style="text-decoration: none"
+              >Edit</a
+            >
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="return confirm('Do you want to delete {{user.username}} ?')"
+          >
+            <a
+              class="text-light"
+              href="user_delete!{{user.id}}"
+              style="text-decoration: none"
+              >Delete</a>
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </table_body>
+  </table>
+  <h2 class="text-danger text-center">{{m}}</h2>
+</div>
+{% endblock %}
